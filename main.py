@@ -20,13 +20,21 @@ def start_processes(files):
             processes.append(p)
 
 
+def exit_prompt(duration):
+    exit_message = (
+        f"Conversion complete \nTime elapased: {duration} seconds"
+        if path
+        else "Process cancelled"
+    )
+    print(exit_message)
+
+
 if __name__ == "__main__":
     os.system("cls")
-    path = askdirectory(title="Select Folder")
-
+    path = askdirectory(title="Select directory with mkv files")
     start = time.perf_counter()
-    processes = list()
 
+    processes = list()
     for dirpath, dirname, files in os.walk(path):
         os.chdir(dirpath)
         start_processes(files)
@@ -36,12 +44,4 @@ if __name__ == "__main__":
 
     end = time.perf_counter()
     duration = round(end - start, 2)
-
-    exit_message = (
-        f"Conversion complete \n" 
-        f"Time elapased: {duration} seconds"
-        if path
-        else "Process cancelled"
-    )
-
-    print(exit_message)
+    exit_prompt(duration)

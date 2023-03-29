@@ -103,7 +103,7 @@ def update_mkv_tracks(file, mkv_tracks) -> None:
 
     command = f'mkvpropedit "{file}"'
     prompt = (
-        f"{file} \n" f" Audio tracks:{audio_count}" f" Subtitle tracks:{sub_count} \n"
+        f"{file} \n Audio tracks:{audio_count} Subtitle tracks:{sub_count} \n"
     )
     flag_count = 0  # Value 2 means one audio and one sub are activated
 
