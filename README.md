@@ -37,4 +37,9 @@ Aside from that it only switches few flags but not recreate the mkv files entire
 
 Processing a library of 180 anime episodes takes about **7 seconds** to complete.
 
-Furthermore, not all mkv files have the same number and order of tracks. A commandline argument for one mkv file might not work for the other, that's why it's important to check the tracks' properties. But you don't have to because this program does the job for you.
+Furthermore, not all mkv files have the same number and order of tracks. 
+A commandline argument for one mkv file might not work for the other. 
+This is why it's important to check the tracks' properties. 
+But you don't have to because this program does the job for you. 
+Just spare a few seconds of your time processing mkv files. 
+You wouldn't want to be distracted in between episodes just to change tracks.
