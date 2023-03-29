@@ -20,7 +20,7 @@ We look for four properties: `name`, `number`, `type`, and `language`.
 Some tracks may not have any assigned language like video tracks, thus `lanuage=und` which means undetermined.
 </details>
 
-Because we know each track's properties, we can find tracks with `(type=audio and language=jpn)`{:.python} or `(type=subtitles and language=eng)`{.python} and give these tracks a `flag-default=1` assignment. Otherwise, we give unwanted tracks `flag-default=0`.
+Because we know each track's properties, we can find tracks with `(type=audio and language=jpn)` or `(type=subtitles and language=eng)` and give these tracks a `flag-default=1` assignment. Otherwise, we give unwanted tracks `flag-default=0`.
 
 The program automates the sending of command-line arguments to `mkvpropedit`. For example:
 ```bat
@@ -37,4 +37,4 @@ Aside from that it only switches few flags but not recreate the mkv files entire
 
 Processing a library of 180 anime episodes takes about **7 seconds** to complete.
 
-
+Furthermore, not all mkv files have the same number and order of tracks. A commandline argument for one mkv file might not work for the other, that's why it's important to check the tracks' properties. But you don't have to because this program does the job for you.
