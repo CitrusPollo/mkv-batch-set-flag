@@ -20,7 +20,7 @@ We look for four properties: `name`, `number`, `type`, and `language`.
 Some tracks may not have any assigned language like video tracks, thus `lanuage=und` which means undetermined.
 </details>
 
-Because we know each track's properties, we can find tracks with `(type=audio and language=jpn){:.python}` or `(type=subtitles and language=eng){.python}` and give these tracks a `flag-default=1` assignment. Otherwise, we give unwanted tracks `flag-default=0`.
+Because we know each track's properties, we can find tracks with `(type=audio and language=jpn)`{:.python} or `(type=subtitles and language=eng)`{.python} and give these tracks a `flag-default=1` assignment. Otherwise, we give unwanted tracks `flag-default=0`.
 
 The program automates the sending of command-line arguments to `mkvpropedit`. For example:
 ```bat
