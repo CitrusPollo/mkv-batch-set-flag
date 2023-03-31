@@ -27,7 +27,7 @@ Some tracks may not have any assigned language like video tracks, thus `lanuage=
 
 Because we know each track's properties, we can find tracks with `(type=audio and language=jpn)` or `(type=subtitles and language=eng)` and give these tracks a `flag-default=1` assignment. Otherwise, we give unwanted tracks `flag-default=0`.
 
-The program automates the sending of command-line arguments to `mkvpropedit`. For example:
+The program automates the sending of command-line arguments to `mkvpropedit`. For example, the complete commandline is generated below:
 ```bat
 mkvpropedit "Anime S01E01.mkv" \
 --edit track:1 --set flag-default=1 --set flag-forced=1 \ 
