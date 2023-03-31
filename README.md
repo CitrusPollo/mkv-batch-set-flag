@@ -1,8 +1,13 @@
 ## What is this?
 This Python program automates the process of setting JPN audio and full ENG subtitles as default tracks for mkv files. 
 
-## Why?
-So you don't have to manually select your preferred audio and subtitle tracks for each video in your video player. 
+## Requirements
+You need only two programs, `mkvmerge` and `mkvpropedit`. These are part of the [MKVToolNix](https://mkvtoolnix.download/) program bundle which can be downloaded [here](https://mkvtoolnix.download/downloads.html) as installer or portable. Available in various operating systems including Windows, Linux, and Mac.
+
+If you install MKVToolNix, add its directory to your environment path variable. Else if you download it as portable, just copy the executables `mkvmerge` and `mkvpropedit` in the same directory as the Python scripts.
+
+## Why do I need this?
+If you run this script once, you won't ever have to manually select your preferred audio and subtitle tracks for each video in your video player. 
 Some video players like VLC Media Player on Android don't support choosing a preferred language for audio and subtitles.
 
 ## How does it work?
@@ -41,8 +46,3 @@ Furthermore, not all mkv files have the same number and order of tracks.
 A commandline argument for one mkv file might not work for the other. 
 This is why it's important to check the tracks' properties. 
 But you don't have to because this program saves you from stopping in between episodes just to change tracks.
-
-## Requirements
-You need only two programs, `mkvmerge` and `mkvpropedit`. These are part of the [MKVToolNix](https://mkvtoolnix.download/) program bundle which can be downloaded [here](https://mkvtoolnix.download/downloads.html) as installer or portable. Available in various operating systems including Windows, Linux, and Mac.
-
-If you install MKVToolNix, add its directory to your environment path variable. Else if you download it as portable, just copy the executables `mkvmerge` and `mkvpropedit` in the same directory as the Python scripts.
