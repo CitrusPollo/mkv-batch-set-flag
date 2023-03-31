@@ -39,16 +39,16 @@ provided that `track:2` is a JPN audio track and `track:4` is full ENG dialogue 
 
 If there is at least one JPN audio track and at least one ENG dialogue subtitles track set to default after this process, then the program returns a `Pass` indicator.
 Below is a sample output after a successful processing of an mkv file:
-```diff
+```bat
 Anime S01E01.mkv
-  Audio tracks:2 Subtitle tracks:2
-+ Track:2 Type:aud Language:jap Name:Japanese Dub
-# Track:3 Type:aud Language:eng Name:English Dub
-+ Track:4 Type:sub Language:eng Name:English Sub
-# Track:5 Type:sub Language:jap Name:Japanese Sub
-@@ Pass @@
+ Audio tracks:2 Subtitle tracks:2
+ Track:2 Type:aud Language:jap Name:Japanese Dub
+ Track:3 Type:aud Language:eng Name:English Dub
+ Track:4 Type:sub Language:eng Name:English Sub
+ Track:5 Type:sub Language:jap Name:Japanese Sub
+Pass
 ```
-The text coloring is handled by the `termcolor` library in Python, so there will be no printed special characters.
+
 ## How fast is it?
 Aside from that it only switches few flags but not recreate the mkv files entirely, this program utilizes `multiprocessing`. This means that multiple instances of `mkvpropedit` is being run, and that multiple files are being processed concurrently. 
 
