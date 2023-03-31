@@ -5,7 +5,8 @@ from multiprocessing import Process
 import time
 
 
-def main(file):
+def read_mkv(file):
+
     mkv_info = read_mkv_info(file)
     mkv_tracks = get_mkv_tracks(mkv_info)
     update_mkv_tracks(file, mkv_tracks)
@@ -15,25 +16,30 @@ def start_processes(files):
     for file in files:
         if file.endswith(".mkv"):
             # main(file)
-            p = Process(target=main, args=[file])
+            p = Process(target=read_mkv, args=[file])
             p.start()
             processes.append(p)
 
 
-def exit_prompt(duration):
-    exit_message = (
-        f"Conversion complete \nTime elapased: {duration} seconds"
-        if path
-        else "Process cancelled"
-    )
-    print(exit_message)
+def measure_duration(func):
+    def wrapper(*args, **kwargs):
+        start = time.perf_counter()
+        func(*args, **kwargs)
+        end = time.perf_counter()
+        duration = round(end - start, 2)
+        exit_message = (
+            f"Conversion complete \nTime elapased: {duration} seconds"
+            if path
+            else "Process cancelled"
+        )
+        print(exit_message)
+
+    return wrapper
 
 
-if __name__ == "__main__":
-    os.system("cls")
-    path = askdirectory(title="Select directory with mkv files")
-    start = time.perf_counter()
-
+@measure_duration
+def main(path):
+    global processes
     processes = list()
     for dirpath, dirname, files in os.walk(path):
         os.chdir(dirpath)
@@ -42,6 +48,9 @@ if __name__ == "__main__":
     for process in processes:
         process.join()
 
-    end = time.perf_counter()
-    duration = round(end - start, 2)
-    exit_prompt(duration)
+
+if __name__ == "__main__":
+    os.system("cls")
+    window_title = "Select directory with mkv files"
+    path = askdirectory(title=window_title)
+    main(path)
