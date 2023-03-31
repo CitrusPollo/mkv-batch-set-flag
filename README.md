@@ -35,7 +35,9 @@ mkvpropedit "Anime S01E01.mkv" \
 --edit track:3 --set flag-default=1 --set flag-forced=1 \
 --edit track:4 --set flag-default=0 --set flag-forced=0 \
 ```
-provided that `track:1` is a JPN audio track and `track:3` is full ENG subtitle track, while `track:2` is an ENG audio track and `track:4` is a song lyrics track.
+provided that `track:1` is a JPN audio track and `track:3` is full ENG dialogue subtitles track, while `track:2` is an ENG audio track and `track:4` is a song lyrics track.
+
+If there is at least one JPN audio track and at least one ENG dialogue subtitles track set to default after this process, then the program returns a `Pass` indicator.
 
 ## How fast is it?
 Aside from that it only switches few flags but not recreate the mkv files entirely, this program utilizes `multiprocessing`. This means that multiple instances of `mkvpropedit` is being run, and that multiple files are being processed concurrently. 
