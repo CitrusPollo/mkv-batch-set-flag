@@ -14,6 +14,7 @@ Some video players like VLC Media Player on Android don't support choosing a pre
 This program reads all mkv files inside a directory and subdirectories. 
 For each mkv file, `mkvmerge` finds what tracks are present. 
 We look for four properties: `name`, `number`, `type`, and `language`.
+These properties are used to find JPN audio and full ENG subtitles and the program sets them to default tracks.
 
 <details>
 <summary><h3>Brief overview about track properties</h3></summary>
@@ -24,6 +25,9 @@ We look for four properties: `name`, `number`, `type`, and `language`.
 - `language` tells what the track's language is. For Japanese, `language=jpn` while for English, `language=eng`. 
 Some tracks may not have any assigned language like video tracks, thus `lanuage=und` which means undetermined.
 </details>
+
+<details>
+<summary><h3>Further explanation</h3></summary>
 
 Because we know each track's properties, we can find tracks with `(type=audio and language=jpn)` or `(type=subtitles and language=eng)` and give these tracks a `flag-default=1` assignment. Otherwise, we give unwanted tracks `flag-default=0`.
 
@@ -48,6 +52,7 @@ Anime S01E01.mkv
  Track:5 Type:sub Language:jap Name:Japanese Sub
 Pass
 ```
+</details>
 
 ## How fast is it?
 Aside from that it only switches few flags but not recreate the mkv files entirely, this program utilizes `multiprocessing`. This means that multiple instances of `mkvpropedit` is being run, and that multiple files are being processed concurrently. 
