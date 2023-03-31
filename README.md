@@ -42,7 +42,7 @@ A commandline argument for one mkv file might not work for the other.
 This is why it's important to check the tracks' properties. 
 But you don't have to because this program saves you from stopping in between episodes just to change tracks.
 
-## Where to get `mkvmerge` and `mkvpropedit`?
-`mkvmerge` and `mkvpropedit` are part of the [MKVToolNix](https://mkvtoolnix.download/) program bundle which can be downloaded [here](https://mkvtoolnix.download/downloads.html) as installer or portable. 
+## Requirements
+You need only two programs, `mkvmerge` and `mkvpropedit`. These are part of the [MKVToolNix](https://mkvtoolnix.download/) program bundle which can be downloaded [here](https://mkvtoolnix.download/downloads.html) as installer or portable. Available in various operating systems including Windows, Linux, and Mac.
 
 If you install MKVToolNix, add its directory to your environment path variable. Else if you download it as portable, just copy the executables `mkvmerge` and `mkvpropedit` in the same directory as the Python scripts.
