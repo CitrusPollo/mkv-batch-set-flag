@@ -49,8 +49,8 @@ def count_tracks(mkv_tracks: list) -> tuple:
 
     :param mkv_tracks: This is a list of Tracks objects of an mkv file.
     """
-    audio_count = sum([x.type == "audio" for x in mkv_tracks])
-    sub_count = sum([x.type == "subtitles" for x in mkv_tracks])
+    audio_count = sum([(x.type == "audio" and x.language == 'jpn') for x in mkv_tracks])
+    sub_count = sum([(x.type == "subtitles" and x.language == 'eng') for x in mkv_tracks])
 
     return audio_count, sub_count
 
@@ -66,16 +66,18 @@ def set_track_flag(track: object, audio_count: int, sub_count: int) -> int:
     :param audio_count: This is the number of audio tracks inside an mkv file.
     :param sub_count: This is the number of subtitles tracks inside an mkv file.
     """
-    track_names = ["dialog", "full", "english"]
+    dialog_track_names = ["dialog", "full", "english"]
+    lyrics_track_names = ['sign', 'song', 's&s']
 
     is_jpn_audio = track.type == "audio" and track.language == "jpn"
-    is_dialog_sub = any(text in track.name.lower() for text in track_names)
+    is_dialog_sub = any(text in track.name.lower() for text in dialog_track_names)
+    is_lyric_sub = any(text in track.name.lower() for text in lyrics_track_names)
     is_eng_sub = track.type == "subtitles" and track.language == "eng"
 
     flag_default = 0
     if is_jpn_audio or (is_jpn_audio and audio_count == 1):
         flag_default = 1
-    if is_eng_sub and (is_dialog_sub or sub_count == 1):
+    if is_eng_sub and (is_dialog_sub or sub_count == 1 or not is_lyric_sub):
         flag_default = 1
     if sub_count == 1:
         flag_default = 1
